@@ -4,23 +4,19 @@
     update_cache: no
     state: latest 
   loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common']
-  become: yes
 
 - name: Add Docker GPG apt key
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
-  become: yes
 
 - name: Add Docker apt repository
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release | lower }} stable
     state: present
-  become: yes
 
 - name: Install docker-ce
   apt: 
     update_cache: yes 
     name: docker-ce 
     state: latest
-  become: yes
