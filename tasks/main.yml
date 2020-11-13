@@ -4,6 +4,7 @@
     update_cache: no
     state: latest 
   loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common']
+  become: yes
 
 - name: Add Docker GPG apt Key
   apt_key:
@@ -15,9 +16,11 @@
   apt_repository:
     repo: deb https://download.docker.com/linux/ubuntu gpg stable
     state: present
+  become: yes
 
 - name: Update apt and install docker-ce
   apt: 
     update_cache: yes 
     name: docker-ce 
     state: latest
+  become: yes
