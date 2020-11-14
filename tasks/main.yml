@@ -28,4 +28,5 @@
 - name: Add current user to docker rights
   shell: |
      usermod -aG docker $USER
+     newgrp docker
   become: yes
